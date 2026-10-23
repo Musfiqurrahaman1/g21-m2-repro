@@ -1,64 +1,48 @@
-# CS4928 G21 / P16 - M2 bounded reproduction (Self-Admitted Aging Debt)
+@'
+# CS4928 G21 / P16 - Bounded reproduction of Self-Admitted Aging Debt (M2)
 
-Reproduces, on a bounded sample, the Active/Dormant split of self-admitted aging debt using the
-paper's released data and patterns (Zenodo 10.5281/zenodo.15211796, v2). RQ1 only.
+Group 21: Musfiqur Rahaman, Jusmir AslamUddin, Shiam MD Hossain.
 
-Contents: `scripts/` (sample, classify, summarise), `deviations.md` (decisions log),
-`results/summary.md` (your write-up template), `tests/` (self-test on made-up data).
+We reproduce one result from Sridharan, Mantyla and Rantala (EMSE 2025, arXiv 2504.17428) on a bounded sample: the split between Dormant and Active self-admitted aging debt (RQ1). The data and patterns come from the paper's replication package (Zenodo 10.5281/zenodo.15211796, v2).
 
-## Before you run anything
-1. Read `deviations.md`. Agree each entry, tick it and put today's date and initials. **Do this before the full run.**
-2. Find the source of the "~96%" figure in the paper and write it in C-06.
+**Result:** NOT REPRODUCED. The Dormant share in our 500-comment sample is 36.8% (138 of 375), against about 96% expected. See `results/summary.md` for the reasons and limits.
 
-## Setup (Windows PowerShell; on Mac/Linux use `python3` and `shasum -a 256`)
+## What is in this repo
+- `scripts/` - `sample.py` (draws the sample), `classify.py` (matches patterns and assigns Active/Dormant), `summarise.py` (counts and status)
+- `data/` - `sample_ids.csv` and `sample_manifest.json` (the frozen sample); `raw/` holds the two input files and their hashes in `CHECKSUMS.txt`
+- `results/raw/` - raw output of the full run; `results/pilot/` - the one-comment test run
+- `results/derived_counts.csv`, `results/summary_generated.md` - numbers produced by `summarise.py`
+- `results/summary.md` - our write-up
+- `deviations.md` - decisions we made before running, and the group sign-off
+- `tests/test_pipeline.py` - self-test on made-up data
+
+## How to run it (Windows PowerShell)
 ```
-py -m pip install -r requirements.txt
-py tests\test_pipeline.py                     # should print PASS (synthetic data, not a result)
+python -m pip install -r requirements.txt
+python tests\test_pipeline.py
 ```
-Unzip the Zenodo `replication_package.zip` and copy these two files into `data\raw\`:
-`gold_standard_saad_comments.xlsx` and `saad_patterns.txt`. Then record their hashes:
-```
-Get-FileHash data\raw\* -Algorithm SHA256 | Format-List | Out-File data\raw\CHECKSUMS.txt
-```
+The test should print PASS. It uses made-up data and is not a study result.
 
-## Run (in this order)
+Unzip the Zenodo `replication_package.zip` and copy `gold_standard_saad_comments.xlsx` and `saad_patterns.txt` into `data\raw\`. Then run, in this order:
 ```
-# 1. frozen sample (seed 42 is the proposed value in C-01; use whatever the group agreed)
-py scripts\sample.py --input data\raw\gold_standard_saad_comments.xlsx --seed 42
-git add data\sample_ids.csv data\sample_manifest.json
-git commit -m "M2: frozen sample (seed 42, n=500)"
-
-# 2. pilot - ONE comment, separate folder, check the row by eye
-py scripts\classify.py --input data\raw\gold_standard_saad_comments.xlsx --patterns data\raw\saad_patterns.txt --limit 1 --out results\pilot
-
-# 3. full bounded run
-py scripts\classify.py --input data\raw\gold_standard_saad_comments.xlsx --patterns data\raw\saad_patterns.txt
-
-# 4. derive the result from the raw output
-py scripts\summarise.py
+python scripts\sample.py --input data\raw\gold_standard_saad_comments.xlsx --seed 42
+python scripts\classify.py --input data\raw\gold_standard_saad_comments.xlsx --patterns data\raw\saad_patterns.txt --limit 1 --out results\pilot
+python scripts\classify.py --input data\raw\gold_standard_saad_comments.xlsx --patterns data\raw\saad_patterns.txt
+python scripts\summarise.py
 ```
-Then fill `results/summary.md` (everything marked `[FILL]`), commit, tag and push:
-```
-git add -A
-git commit -m "M2: bounded reproduction run and evidence"
-git tag M2_REPRO
-git push origin main --tags
-```
-Link the tag in the tracker (RQs and Milestones sheet, row G21: "Reproduction result" and "Evidence link").
+On Mac or Linux use `python3`. The second command is the one-comment pilot, and the third is the full run.
 
-## Rules to keep (from the Lab 4 brief)
-- Do not change the sample, patterns handling, metric or thresholds after seeing the output.
-  If something material must change, write a dated deviation in `deviations.md` BEFORE rerunning.
-- Keep every raw output you use. Do not overwrite `results/raw/classification.csv` with an edited version.
-- A crash, missing file or environment problem is INCONCLUSIVE/BLOCKED, not NOT REPRODUCED.
-- No held-out / Event material.
-- GenAI helped write these scripts. Each of you must be able to explain what they do; you are
-  responsible for checking the output. A number from an AI is not evidence; a number from your run is.
+## What the scripts do
+- `sample.py` sorts all comment ids and draws 500 with `random.Random(seed)`, so the same seed gives the same sample.
+- `classify.py` cleans the 399 patterns and searches each sampled comment (case-insensitive regex). It takes Active or Dormant from the authors' manual label using the paper's taxonomy. It writes one row per sampled comment, with nothing dropped, plus a run log with file hashes and versions.
+- `summarise.py` reads only the raw CSV and computes the counts, the Dormant share, a Wilson 95% interval, a status under our M1 rule, and a trace example.
 
-## What the scripts do (so you can explain them)
-- `sample.py` sorts all comment ids, then draws 500 with `random.Random(seed)`. Same seed -> same sample.
-- `classify.py` loads the cleaned patterns, searches each sampled comment (case-insensitive regex),
-  maps the row's manual label to Active/Dormant/Explanatory with the paper's taxonomy, and writes one
-  row per sampled comment (nothing dropped) plus a run log with file hashes and versions.
-- `summarise.py` reads only the raw CSV and computes counts, the Dormant share, a Wilson 95% interval,
-  descriptive sensitivity checks, a mechanical status per the M1 rule, and a trace example.
+## Rules we followed
+- The sample, method, metric and thresholds were frozen in M1. Anything we decided afterwards is dated in `deviations.md`.
+- Raw outputs were kept as produced and not edited.
+- A crash or missing file would count as INCONCLUSIVE/BLOCKED, not NOT REPRODUCED.
+- No held-out or Event material was used.
+- Claude (an AI assistant) helped us write the scripts and draft the write-up. We ran everything ourselves and checked the numbers, and we can explain each script.
+
+The tag `M2_REPRO` marks the commit we submitted for the M2 checkpoint.
+'@ | Set-Content -Path README.md -Encoding UTF8
