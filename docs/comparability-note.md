@@ -1,4 +1,7 @@
-﻿# Why our RQ1 result does not match the paper's 96% (Group 21, P16)
+﻿# Technical blocker note - Group 21, P16
+
+**Blocker:** the baseline in our M1 plan (about 96% Dormant) cannot be recomputed from the released dataset, so our plan was not fully frozen and clear on what we were comparing against. The code ran correctly and the run is valid. The blocker is the comparison, not the execution. Details below.
+# Why our RQ1 result does not match the paper's 96% (Group 21, P16)
 
 Written 23 Oct 2026 at the request of our lab coordinator. The run itself was not blocked. It finished and gave a valid result. This note explains why that result cannot be compared directly with the paper's figure.
 
@@ -29,3 +32,4 @@ A fair test needs the paper's full dataset with the `@deprecated` instances, or 
 
 ## AI use
 Claude helped us draft this note. We checked the figures against Table 9 of the paper and against our own output files.
+
