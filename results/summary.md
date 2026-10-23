@@ -54,7 +54,7 @@ Raw output: `results/raw/classification.csv`. Numbers: `results/derived_counts.c
 The run is valid (no missing comments, no unknown labels, all patterns worked). Our Dormant share is 36.8%. To be within 10 points of 96% we needed 86% or more, and we are also below the 80% line. The whole 95% range is below both.
 
 ## Why the numbers may not match
-The paper's 96% is a count of label types over its whole dataset, and about 94% of that is `@deprecated` tags. Those tags are not in the file we sampled. So our number and theirs measure different things. We think this explains most of the gap, but this run did not test it. Without the `@deprecated` tags the paper's own gold figure is about 42% Dormant, which is close to ours. TODO( ) check this 42% against Table 9. We only noticed this after seeing the data, so it was not part of our rule.
+The paper's 96% is a count of label types over its whole dataset, and about 94% of that is `@deprecated` tags. Those tags are not in the file we sampled. So our number and theirs measure different things. We think this explains most of the gap, but this run did not test it. Without the `@deprecated` tags the paper's own gold figure is about 42% Dormant, which is close to ours. The 42% is our own calculation from Table 9: (96.53 - 94.01) / (100 - 94.01) = 42.1%, assuming all `@deprecated` instances are Dormant. We checked Table 9 on 23 Oct 2026. We only noticed this after seeing the data, so it was not part of our rule.
 
 ## How to trace one result
 Dormant share = 138 / 375 in `results/raw/classification.csv`. Example: comment `07c8485f57e9fd594472f1f8cb0dd1d6` (row 3 of `data/sample_ids.csv`) matched line 380 of `saad_patterns.txt`, label `future_obsolescence`, so Dormant. We checked this chain by hand: Musfiqur, 23 Oct 2026.
@@ -70,5 +70,5 @@ Dormant share = 138 / 375 in `results/raw/classification.csv`. Example: comment 
 
 ## Next steps
 1. Freeze the RQ2 repository and selection rule before looking at results.
-2. TODO( ) pilot row checked by eye against the Excel file (name, date).
+2. Pilot row checked by eye against the Excel file (Musfiqur, 23 Oct 2026).
 3. Get Jusmir and Shiam to confirm the sign-off in `deviations.md`.
