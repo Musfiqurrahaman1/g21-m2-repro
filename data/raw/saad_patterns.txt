@@ -1,0 +1,399 @@
+^legacy
+due to legacy
+legacy stuff
+breaking backwards? compatibility
+for compatibility with existing
+keep existing code compatible
+serializability across versions
+for a while for compatibility
+using the legacy
+^backwards? compatibility
+compatible with old version
+compatibility with previous version
+maintain backwards? compatibility
+of backwards? compatibility
+breaks? backwards? compatibility
+legacy parsing
+handles backwards? compatibility
+by backwards? compatibility
+must be a legacy
+in legacy format
+ensure backwards? compatibility
+retain backwards? compatibility
+legacy container
+for[\s\w]*compatibility reasons?
+compatibility with old
+old migration code is kept around
+legacy verification
+provides? backwards? compatibility
+of legacy
+to backwards? compatibility
+backwards? compatibility support
+preserves? backwards? compatibility
+for [\w\s]* backwards? compatibility
+support backwards? compatibility
+backwards compatibility[.]*$
+legacy support
+but legacy code
+support legacy
+to legacy code
+for compatibility with old code
+the legacy code
+is legacy
+as legacy code
+^compatibility:
+handle legacy code
+need legacy code
+support legacy code
+^backwards? compatible
+legacy code that
+provides compatibility for
+backwards?\s*compatibility
+testing legacy code
+legacy code is
+for compatibility with earlier
+for compatibility with the behavior
+a legacy
+are legacy
+compat with older
+from[.\s\w]*legacy
+in the legacy
+some\s*legacy
+with[.\s\w]*legacy
+note[\s\w:]*legacy
+of the legacy
+^(?:the\s+)?legacy\s+system
+for[.\s\w]*legacy
+the default legacy
+old legacy system
+legacy system[s]*$
+legacy apps\.?$
+legacy permissions
+compatibility with the old
+legacy code does nothing
+legacy applications\.?$
+aware legacy applications
+can guarantee backwards compatibility
+for maintaining compatibility
+introduces incompatibility with
+update legacy
+by old software
+old behavior
+on older systems
+implementations of this older model
+on some older models
+old models have the wrong
+archaic method name
+for the archaic
+used by the archaic
+use the old
+the old code
+^old code
+old code left
+old code:
+old code lines
+old code had
+some old code
+is old code
+use old code
+to old code
+old code that
+using old system
+^old system
+old system.$
+for very old system
+support the old system for
+compatibility with obsolete
+legacy apps may
+old code is
+support obsolete
+legacy apps are
+keep backwards? compatibility
+the legacy system
+old backwards? compatible
+keep new code backwards? compatible
+legacy apps to add
+in case legacy apps
+older versions? of
+versions older than
+old versions? of
+use version
+a older version
+for older versions?
+compliant old version
+from old versions
+in older versions?
+previous versions? of
+^older versions?
+or older versions?
+for old versions?
+in old versions?
+with an older version
+unsupported old versions
+old versions? require
+^old version
+on old(er)? versions?
+keep old versions doing it
+only support in[\w\s]+version
+and prior version
+with earlier version
+used because prior versions of
+by older versions?
+by earlier version
+use this version
+prior versions? of
+prior or later version
+in earlier versions? of
+^earlier version
+not earlier versions?
+and earlier versions? of
+if earlier version
+in a next version of
+from earlier version
+from older version
+on earlier versions we
+for earlier versions,
+an earlier version of
+under earlier versions? of
+conflicts with past version
+past versions of this
+not work against old version
+use an older version
+outdated version
+needs to be run on older version
+doesn't work on newer versions
+on earlier versions? of
+^on earlier versions?
+for earlier versions of
+cannot be used in
+^old unsupported version
+in old days
+outdated plugin parameters
+'upgrade to the latest'
+'consider upgrading'
+'upgrading from'
+'consider updating'
+'update this code'
+'^upgrade to'
+'when upgraded to'
+'after upgrading'
+'need change when upgrading'
+'upgrade from'
+'when we upgrade to'
+'needs? to be updated'
+'we can upgrade and use'
+'due to upgrading from'
+'is needed for upgrading'
+'before upgrading to the current'
+'need some upgrades'
+'this may be updated'
+'not upgrading'
+'class might be moved to'
+'^retrofit'
+'revamp and simplify'
+next[\s\w]*revamp'
+'refactoring old code'
+'deeper retrofit eventually'
+'revamp the'
+'may need to change'
+'has been retrofitted'
+\(retrofitted to'
+'to be compatibly retrofitted'
+'retrofitted to match'
+'modernize code'
+'modernize this'
+'before the big overhaul'
+'need an overhaul for'
+'receive a major overhaul'
+'future work should overhaul'
+'need to totally overhaul'
+'needs to be overhauled'
+'future release of'
+'work in a future release'
+'available in a future'
+'implemented in a future'
+'supported in a future'
+'renamed or removed in a future'
+'change or be removed in a future'
+'changed in future'
+'will be added in future'
+'changes? in future'
+'removed or changed in future'
+'may be relaxed in future'
+'change or get removed in future'
+'work in future versions'
+'removed or changed in the next'
+'as soon as we ditch'
+'now that we're ditching'
+'now replaced by the new'
+'but completely scrapped'
+simplified for the next major release'
+changed to[\s\w]* in the next major release'
+'with upcoming version'
+'in upcoming version'
+'won't work on future'
+'not supported in the new'
+'does not work currently'
+'on newer systems'
+'only in newer systems'
+'if future version of'
+'but future versions will'
+'future releases? of'
+'future versions may'
+'future versions to not'
+'approaches in future versions'
+for future versions? of'
+in[.\s\w]*future versions? of'
+'future versions cannot be maintained'
+'note: future versions'
+'with future versions of'
+'future versions will have'
+'not supported in newer'
+'future versions as well'
+'future versions of sdc'
+'in newer versions'
+'in later versions becomes'
+'in later versions? of'
+'a later versions? of'
+'some later version'
+'for later versions? of'
+'to later version'
+only work on[.\s\w]*newer'
+'as later versions? of'
+'later version may'
+'in later versions$'
+'^later version'
+'or newer versions'
+'allowed in next version'
+'depend on incompatible versions'
+'will support that next version'
+'newer versions of'
+'with newer versions'
+'! later versions? of'
+'in the next version of'
+'will obtain an updated version'
+future versions of the'
+'being phased out'
+'be phased out'
+'are phased out'
+'with outdated'
+'are outdated'
+'outdated[.]*$'
+'^outdated'
+'is phasing out'
+future versions of android'
+not for later versions?:'
+changes? in future versions?'
+may move or be removed'
+for future versions? (could|here)'
+eventually abandoned but this'
+revamp[\s\w]*api'
+'compatible with future'
+^deprecated'
+'are deprecated'
+'deprecated at'
+'uses the deprecated'
+'is deprecated'
+'deprecated since'
+'has been deprecated'
+'deprecated in favor'
+'deprecated from'
+'deprecated on'
+'this deprecated'
+'deprecated old code'
+'deprecated and not recommended'
+'practise is deprecated'
+deprecated class'
+'may be deprecated'
+'will be deprecated'
+'due to be decommissioned'
+'are useless'
+'class is useless'
+'not really needed'
+'technically useless'
+'^unused'
+is unnecessary$'
+'completely useless'
+'^useless'
+'^unnecessary$'
+'^unneeded'
+'^not used'
+'this is useless'
+'not needed anymore'
+'useless anyway'
+'should be deadcode'
+\(abandoned\)'
+'^unusable'
+'unusable at the moment'
+'this stays unnecessary'
+'no longer use this'
+'not work anymore'
+'no longer works'
+'is now abandoned'
+'has been decommissioned'
+unmaintained code'
+this is not used'
+might ditch'
+unmaintained, potentially harmful'
+'currently unused'
+currently unmaintained'
+'currently not supported'
+'currently doesn't support'
+'currently ditched'
+'not currently used'
+'currently unneeded'
+:[.\s\w]*remove[.]*$'
+'get rid of this'
+'remove unnecessary'
+'can be obsoleted'
+':\s*remove[.]+'
+'scrapped implementation'
+'^obsolete'
+'obsoleted feature'
+'obsolete as of'
+'is obsolete'
+'but now obsolete'
+\(obsolete\)'
+'for obsolete'
+'now an obsolete'
+'obsoleted by'
+'obsoleted, but not yet removed'
+'now obsoleted'
+remove old code'
+this should be cleaned up'
+trash any attributes'
+so remove it$'
+:remove the following'
+is now obsolete
+remove this line[.]*$'
+remove this constant[.]'
+remove this[\s\w]*condition[.]'
+remove this method'
+'is deadcode'
+'^deadcode'
+consider remov(e|ing) this'
+can be removed in[\s\w]*future'
+to be removed in a future'
+may be removed[\s\w]*future'
+'would be unneeded and removed'
+'remove in newer version'
+remove in[\s\w]*next'
+'eventually be removed'
+might be removed in future'
+'to be removed? on later'
+'method will be deleted'
+'prudent to remove this'
+'to be scrapped'
+'need to be scrapped'
+'removal in the next major release'
+'may be deleted in future'
+(and|it|this) should be removed (in|when|during)
+scheduled for removal in'
+can be removed[\(\s]*when'
+this check can be removed'
+and\s*(it)?\s*will be removed\s*(in|from)\s*'
+this[\s\w]*will be removed\s*(in|after|\.)?'
+method will be removed,'
+it will be removed from next'
+code will be removed in a future'
+will be removed after the migration'

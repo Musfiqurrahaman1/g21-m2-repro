@@ -1,0 +1,2 @@
+sample_order,comment_id,project_id,matched,n_patterns_matched,matched_pattern_lines,ad_types_manual,category,multi_label
+1,c42ce77a89d1732b4798fc2069f31d17,,True,2,245|275,not_aging_debt_but_explanatory,EXPLANATORY,False

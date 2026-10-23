@@ -1,0 +1,14 @@
+{
+  "created_utc": "2026-10-23T00:57:00+00:00",
+  "input_file": "data\\raw\\gold_standard_saad_comments.xlsx",
+  "input_sha256": "0c2155f4a703c2d8a117001c8dc1801d76af3f83f4a88e178d65694e0f7fe340",
+  "input_rows": 3437,
+  "population": "all",
+  "population_rows": 3437,
+  "seed": 42,
+  "n": 500,
+  "sample_csv": "data\\sample_ids.csv",
+  "sample_sha256": "ce7a854c4e0287c816ee113c4f40832431f94e6c10f45963ecf316106faa0780",
+  "python": "3.12.10",
+  "pandas": "3.1.0"
+}
