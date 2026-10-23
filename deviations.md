@@ -116,3 +116,6 @@ _None recorded yet._ Template:
 - Entries D-00, C-01 to C-07 and C-06b reviewed and accepted as written (seed 42, population = all 3,437 rows).
 - Decided by: Musfiqur Rahaman, 2026-10-23.
 - Group confirmation (Jusmir AslamUddin, Shiam MD Hossain): ____ date/initials
+
+## Group confirmation
+- All entries above (D-00, C-01 to C-07, C-06b) were confirmed by the group on 2026-10-23, before the results were written up: Musfiqur Rahaman, Jusmir AslamUddin, Shiam MD Hossain (confirmed in person).
