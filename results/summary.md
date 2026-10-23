@@ -1,50 +1,74 @@
-# G21 / P16 - M2 bounded reproduction: results summary
+﻿# G21 - M2 reproduction summary (RQ1)
 
-> Template. Every `[FILL]` must be written by the group from its OWN run. The numbers come from
-> `results/summary_generated.md` after you run the scripts; the interpretation is yours.
-> Nothing in this file was produced by running the real data.
+Group 21, project P16 (Self-Admitted Aging Debt). 23 Oct 2026.
+AI note: Claude helped us write the scripts and draft this summary. We ran the scripts ourselves and are responsible for the results.
 
-## 1. Frozen M1 (copied verbatim, not edited)
-- RQ1: _[FILL - paste exact RQ1 from your workbook/tracker]_
-- Source anchor in the paper: _[FILL]_
-- Sample: 500 comments, fixed seed, released dataset (Zenodo 10.5281/zenodo.15211796)
-- Method: apply the paper's published aging-debt patterns, classify matches Active/Dormant
-- Expected: Dormant is the large majority (~96% in the paper's gold-standard data)
-- Decision rule: REPRODUCED if Dormant share within 10 points of the paper's figure; non-reproduction if below ~80%
-- Clarifications/deviations: see `deviations.md` (C-01 .. C-07, D-00)
+## What we froze in M1
+- **Question:** Do we get a similar Dormant/Active split as the paper when we apply its aging-debt patterns to a sample of the released comments?
+- **Sample:** 500 random comments from the released dataset (Zenodo 10.5281/zenodo.15211796), fixed seed.
+- **Expected:** Dormant is the big majority (about 96% in the paper, Table 9).
+- **Rule:** Reproduced if our Dormant share is within 10 points of the paper's. Not reproduced if it is below about 80%.
+- Our extra decisions (made before the run, M1 numbers not changed) are in `deviations.md`.
 
-## 2. Input identity
-- File: `gold_standard_data/gold_standard_saad_comments.xlsx`, Zenodo v2, sha256 `[FILL from results/raw/run_log.txt]`
-- Patterns: `saad_patterns.txt`, sha256 `[FILL]`
-- Sample: seed `[FILL]`, population `[FILL]`, `data/sample_ids.csv` sha256 `[FILL]`
+## What we did
+1. Took 500 random comments (seed 42) from the 3,437 in `gold_standard_saad_comments.xlsx`.
+2. Matched each one against the paper's 399 patterns.
+3. Put each comment in Active or Dormant using the authors' labels and the paper's categories.
+4. Ran one comment first as a test, then all 500. Nothing was
+@'
+# G21 - M2 reproduction summary (RQ1)
 
-## 3. Environment and execution route
-- Python / pandas / openpyxl versions: `[FILL from run_log.txt]`
-- Commands run, in order: `[FILL - copy from your terminal history]`
-- Pilot (1 comment): `[FILL - what you checked by eye and what you saw]`
+Group 21, project P16 (Self-Admitted Aging Debt). 23 Oct 2026.
+AI note: Claude helped us write the scripts and draft this summary. We ran the scripts ourselves and are responsible for the results.
 
-## 4. Raw evidence
-- `results/raw/classification.csv` (one row per sampled comment, nothing dropped)
-- `results/raw/run_log.txt`, `results/raw/pattern_report.csv`
-- Failed/awkward cases (unmatched, UNMAPPED, uncompilable patterns): `[FILL - counts and what you did, which should be: nothing, they stay in]`
+## What we froze in M1
+- **Question:** Do we get a similar Dormant/Active split as the paper when we apply its aging-debt patterns to a sample of the released comments?
+- **Sample:** 500 random comments from the released dataset (Zenodo 10.5281/zenodo.15211796), fixed seed.
+- **Expected:** Dormant is the big majority (about 96% in the paper, Table 9).
+- **Rule:** Reproduced if our Dormant share is within 10 points of the paper's. Not reproduced if it is below about 80%.
+- Our extra decisions (made before the run, M1 numbers not changed) are in `deviations.md`.
 
-## 5. Derived result
-`[FILL - paste the "Primary result" block from results/summary_generated.md]`
+## What we did
+1. Took 500 random comments (seed 42) from the 3,437 in `gold_standard_saad_comments.xlsx`.
+2. Matched each one against the paper's 399 patterns.
+3. Put each comment in Active or Dormant using the authors' labels and the paper's categories.
+4. Ran one comment first as a test, then all 500. Nothing was removed.
 
-## 6. Trace of one result (be ready to do this live)
-Dormant share -> rows in `results/raw/classification.csv` -> command in `run_log.txt` -> comment_id in `data/sample_ids.csv` -> row in the Excel file.
-`[FILL - write the actual chain with one real comment_id]`
+Commands are in `README.md`. File hashes and versions are in `data/raw/CHECKSUMS.txt` and `results/raw/run_log.txt`.
 
-## 7. Status and justification
-- Status: `[REPRODUCED / NOT REPRODUCED / INCONCLUSIVE-BLOCKED / IN PROGRESS]`
-- Why, against the M1 rule: `[FILL]`
-- Why the comparison with the paper's figure may not be like-for-like (see C-06): `[FILL]`
+## Results
+| | Count |
+|---|---|
+| Sampled comments | 500 |
+| Matched a pattern | 493 (98.6%) |
+| Did not match | 7 |
+| Marked "explanatory" (not aging debt), left out of the split | 121 |
+| Used for the split (matched, Active or Dormant) | 375 |
+| - Active | 237 |
+| - Dormant | 138 |
+| **Dormant share** | **36.8%** (95% range 32.1% to 41.8%) |
 
-## 8. Threats and limitations
-`[FILL - e.g. one sample of 500 from a file that mixes confirmed and explanatory rows; categories come from manual labels not from the patterns; seed-specific result; source of 96% unverified; multi-label rule; other threats you identify]`
+Raw output: `results/raw/classification.csv`. Numbers: `results/derived_counts.csv`.
 
-## 9. Held-out boundary
-No Event / held-out material used. `[CONFIRM]`
+## Status: NOT REPRODUCED
+The run is valid (no missing comments, no unknown labels, all patterns worked). Our Dormant share is 36.8%. To be within 10 points of 96% we needed 86% or more, and we are also below the 80% line. The whole 95% range is below both.
 
-## 10. Next action before the M2 checkpoint
-`[FILL - one concrete next step, e.g. freeze RQ2 repository + selection rule]`
+## Why the numbers may not match
+The paper's 96% is a count of label types over its whole dataset, and about 94% of that is `@deprecated` tags. Those tags are not in the file we sampled. So our number and theirs measure different things. We think this explains most of the gap, but this run did not test it. Without the `@deprecated` tags the paper's own gold figure is about 42% Dormant, which is close to ours. TODO( ) check this 42% against Table 9. We only noticed this after seeing the data, so it was not part of our rule.
+
+## How to trace one result
+Dormant share = 138 / 375 in `results/raw/classification.csv`. Example: comment `07c8485f57e9fd594472f1f8cb0dd1d6` (row 3 of `data/sample_ids.csv`) matched line 380 of `saad_patterns.txt`, label `future_obsolescence`, so Dormant. We checked this chain by hand: Musfiqur, 23 Oct 2026.
+
+## Limits
+- One sample, one seed.
+- The file was built from these same patterns, so the 98.6% match rate is expected and proves little.
+- Active/Dormant comes from the authors' labels, not from the patterns.
+- Some choices were ours: ignore upper/lower case, clean quote marks in the pattern file, count a comment with several labels as Dormant if any label is Dormant.
+- We saw the label counts before the run, so we kept the M1 rule unchanged.
+- Only RQ1 was done. RQ2 has not started.
+- No Event or held-out material was used.
+
+## Next steps
+1. Freeze the RQ2 repository and selection rule before looking at results.
+2. TODO( ) pilot row checked by eye against the Excel file (name, date).
+3. Get Jusmir and Shiam to confirm the sign-off in `deviations.md`.
