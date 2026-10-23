@@ -33,3 +33,11 @@ A fair test needs the paper's full dataset with the `@deprecated` instances, or 
 ## AI use
 Claude helped us draft this note. We checked the figures against Table 9 of the paper and against our own output files.
 
+
+## Direct check: no `@deprecated` tags in the released file
+We checked the released gold file with `scripts/check_deprecated.py`. The saved output is `results/checks/deprecated_check.txt`.
+- Rows in the file: 3,437. Rows containing the tag `@deprecated`: 0.
+- Rows in our 500-comment sample containing `@deprecated`: 0.
+- 695 rows use the plain word "deprecated" in ordinary comment text. These are normal comments, not the Javadoc/annotation tags that the paper counts in its "Existing_Aging_Feature" row (94.01% of the gold standard in Table 9).
+
+So the instances that make up most of the paper's 96% are not in the file we were given. This supports our explanation for the mismatch, but it does not by itself prove that the explanation accounts for the whole gap.

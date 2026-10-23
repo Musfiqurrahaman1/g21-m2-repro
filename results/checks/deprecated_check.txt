@@ -1,0 +1,6 @@
+file: data\raw\gold_standard_saad_comments.xlsx
+rows: 3437
+rows containing '@deprecated': 0
+rows containing 'deprecated': 695
+sampled rows: 500
+sampled rows containing '@deprecated': 0
