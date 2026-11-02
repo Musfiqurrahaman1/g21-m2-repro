@@ -1,4 +1,4 @@
-# AUTO-GENERATED summary (review before using)
+# Event 1
 
 Computed from `results/raw/classification.csv` only. The status below is mechanical; the group must confirm it and write the interpretation in `results/summary.md`.
 
