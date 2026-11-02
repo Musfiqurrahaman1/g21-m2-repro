@@ -115,7 +115,7 @@ _None recorded yet._ Template:
 ## Sign-off (2026-10-23)
 - Entries D-00, C-01 to C-07 and C-06b reviewed and accepted as written (seed 42, population = all 3,437 rows).
 - Decided by: Musfiqur Rahaman, 2026-10-23.
-- Group confirmation (Jusmir AslamUddin, Shiam MD Hossain): ____ date/initials
+- Group confirmation (Jusmir AslamUddin, Shiam MD Hossain)
 
 ## Group confirmation
 - All entries above (D-00, C-01 to C-07, C-06b) were confirmed by the group on 2026-10-23, before the results were written up: Musfiqur Rahaman, Jusmir AslamUddin, Shiam MD Hossain (confirmed in person).
@@ -125,4 +125,4 @@ _None recorded yet._ Template:
 - What was added: a script, its output (results/checks/deprecated_check.txt) and a note, committed after the M2_REPRO tag. It counts @deprecated rows in the released gold file (result: 0).
 - Why: to check the explanation in C-06b that the paper's 96% is mostly @deprecated instances.
 - Effect on interpretation: none on the frozen sample, method, metric or decision rule. The M2 status (NOT REPRODUCED) is unchanged. The check is descriptive context only.
-- Status: PROPOSED - group to confirm. Date/initials: ____
+- Status: PROPOSED 
