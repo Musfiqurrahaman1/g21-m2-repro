@@ -1,4 +1,4 @@
-@'
+
 # CS4928 G21 / P16 - Bounded reproduction of Self-Admitted Aging Debt (M2)
 
 Group 21: Musfiqur Rahaman, Jusmir AslamUddin, Shiam MD Hossain.
@@ -45,4 +45,4 @@ On Mac or Linux use `python3`. The second command is the one-comment pilot, and 
 - Claude (an AI assistant) helped us write the scripts and draft the write-up. We ran everything ourselves and checked the numbers, and we can explain each script.
 
 The tag `M2_REPRO` marks the commit we submitted for the M2 checkpoint.
-'@ | Set-Content -Path README.md -Encoding UTF8
+
