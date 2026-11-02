@@ -121,7 +121,7 @@ _None recorded yet._ Template:
 - All entries above (D-00, C-01 to C-07, C-06b) were confirmed by the group on 2026-10-23, before the results were written up: Musfiqur Rahaman, Jusmir AslamUddin, Shiam MD Hossain (confirmed in person).
 
 ## C-08 - Deprecated-tag check added after the M2_REPRO tag
-- Date: 2026-11-02
+
 - What was added: a script, its output (results/checks/deprecated_check.txt) and a note, committed after the M2_REPRO tag. It counts @deprecated rows in the released gold file (result: 0).
 - Why: to check the explanation in C-06b that the paper's 96% is mostly @deprecated instances.
 - Effect on interpretation: none on the frozen sample, method, metric or decision rule. The M2 status (NOT REPRODUCED) is unchanged. The check is descriptive context only.
