@@ -1,0 +1,8 @@
+run_utc: 2026-11-02T00:37:19+00:00
+command: scripts/classify.py --input data/raw/gold_standard_saad_comments.xlsx --patterns data/raw/saad_patterns.txt --sample data/eventA_ids.csv --out results/eventA
+python: 3.9.6  pandas: 2.3.3  openpyxl: 3.1.5
+input: data/raw/gold_standard_saad_comments.xlsx  sha256: 0c2155f4a703c2d8a117001c8dc1801d76af3f83f4a88e178d65694e0f7fe340
+patterns: data/raw/saad_patterns.txt  sha256: 78eafe30b1f4dd97d6c86d6172734e388cf932d652c531ef27559c3fe4e1a894
+sample: data/eventA_ids.csv  sha256: 07ca5739e099fd38fff461ca13c74356f02a03d2074f20cfb03e89b3c29f2317
+patterns loaded: 399  failed to compile: 0
+sampled rows processed: 2937  ids not found in input: 0
