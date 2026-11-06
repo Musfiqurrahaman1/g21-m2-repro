@@ -54,7 +54,7 @@ Status values: PROPOSED (drafted with AI assistance, not yet agreed) -> CONFIRME
   - Active: `updates_upgrades`, `aging_maintenance`, `legacy_backwards_compatibility`
   - Dormant: `current_deprecation`, `future_deprecation`, `current_obsolescence`,
     `future_obsolescence`, `non_maintenance`
-- About 30 rows carry several labels. Rule: Dormant if ANY label is Dormant, otherwise Active.
+- Rows with several labels: 353 in the full file, 86 of them with both an Active and a Dormant label (corrected on 2026-11-06; the original text said "about 30", see C-09). Rule: Dormant if ANY label is Dormant, otherwise Active.
 - Rows labelled only `not_aging_debt_but_explanatory` are not aging debt: they are excluded from the
   Active/Dormant split but counted and reported.
 - Primary metric: Dormant share among sampled rows that matched at least one pattern AND are
@@ -125,4 +125,12 @@ _None recorded yet._ Template:
 - What was added: a script, its output (results/checks/deprecated_check.txt) and a note, committed after the M2_REPRO tag. It counts @deprecated rows in the released gold file (result: 0).
 - Why: to check the explanation in C-06b that the paper's 96% is mostly @deprecated instances.
 - Effect on interpretation: none on the frozen sample, method, metric or decision rule. The M2 status (NOT REPRODUCED) is unchanged. The check is descriptive context only.
-- Status: PROPOSED 
+- Status: PROPOSED
+
+## C-09 - Corrections after the Week 9 cross-team review by G23 (2026-11-06)
+
+- Multi-label count: C-04 said "about 30 rows". The full file has 353 multi-label rows, and 86 have both an Active and a Dormant label. This rule matters: dropping all multi-label rows moves our M2 result from 36.8% to 28.6%, and reversing the rule (Week 9, `results/week9/`) moves it to 33.3%.
+- What the metric measures: the Dormant share is mainly the authors' manual-label split. 493 of 500 sampled rows match a pattern because the gold file was mined with the same patterns (C-06). Counting labels over the whole file without patterns gives 37.5% Dormant (962/2,562), the same as our Event A result. So M2 and Event A do not test whether the patterns find aging debt. RQ2, on a new repository, is where the patterns have to find the comments themselves.
+- The 695 rows containing "deprecated" (`results/checks/deprecated_check.txt`): they use the word in normal sentences (for example "This class is deprecated and should not be used"), not as `@deprecated` tags. 560 of them carry a deprecation label and 105 are labelled explanatory. So the statement that the file has no `@deprecated` tag instances still holds.
+- Effect: the M2 status (NOT REPRODUCED) and the Event A result are unchanged. Only the description of the method and the C-04 count are corrected.
+- Status: ACCEPTED by the group (G21).
