@@ -42,7 +42,7 @@ On Mac or Linux use `python3`. The second command is the one-comment pilot, and 
 - Raw outputs were kept as produced and not edited.
 - A crash or missing file would count as INCONCLUSIVE/BLOCKED, not NOT REPRODUCED.
 - No held-out or Event material was used.
-- Claude (an AI assistant) helped us write the scripts and draft the write-up. We ran everything ourselves and checked the numbers, and we can explain each script.
+- We used AI to help us write the scripts and draft the write-up. We ran everything ourselves and checked the numbers, and we can explain each script.
 
 The tag `M2_REPRO` marks the commit we submitted for the M2 checkpoint.
 
