@@ -21,7 +21,7 @@ from pathlib import Path
 import openpyxl
 import pandas as pd
 
-from common import categorize, load_patterns, sha256
+from common import DEFAULT_MULTI_LABEL_RULE, MULTI_LABEL_RULES, categorize, load_patterns, sha256
 
 FIELDS = [
     "sample_order",
@@ -43,6 +43,12 @@ def main():
     ap.add_argument("--sample", default="data/sample_ids.csv")
     ap.add_argument("--out", default="results/raw")
     ap.add_argument("--limit", type=int, default=None, help="pilot: only first N sampled ids")
+    ap.add_argument(
+        "--multi-label-rule",
+        choices=sorted(MULTI_LABEL_RULES),
+        default=DEFAULT_MULTI_LABEL_RULE,
+        help="how to resolve rows with several labels (default: dormant_first = C-04)",
+    )
     args = ap.parse_args()
 
     df = pd.read_excel(args.input, dtype=str).set_index("comment_id")
@@ -80,7 +86,7 @@ def main():
         text = "" if pd.isna(rec["cleaned_comment"]) else str(rec["cleaned_comment"])
         hits = [p.line_no for p in patterns if p.rx is not None and p.rx.search(text)]
         label = rec["ad_types_manual"]
-        category, tokens, multi = categorize(None if pd.isna(label) else label)
+        category, tokens, multi = categorize(None if pd.isna(label) else label, args.multi_label_rule)
         rows.append(
             {
                 "sample_order": s["sample_order"],
@@ -115,6 +121,7 @@ def main():
         f"patterns: {args.patterns}  sha256: {sha256(args.patterns)}",
         f"sample: {args.sample}  sha256: {sha256(args.sample)}",
         f"patterns loaded: {len(patterns)}  failed to compile: {n_bad}",
+        f"multi-label rule: {args.multi_label_rule}",
         f"sampled rows processed: {len(rows)}  ids not found in input: {n_missing}",
     ]
     (out_dir / "run_log.txt").write_text("\n".join(log) + "\n", encoding="utf-8")

@@ -78,14 +78,39 @@ def load_patterns(path):
     return patterns
 
 
-def categorize(label):
+# Week 9 design change: the rule for rows with SEVERAL labels used to be hard-coded
+# inside categorize(). It decides the headline Dormant share, so it is now a named,
+# swappable rule. Each rule takes the list of known label tokens and returns
+# "Dormant" or "Active". "dormant_first" is clarification C-04 and stays the default,
+# so M2 and Event A results do not change.
+def _dormant_first(tokens):
+    """C-04 (default): Dormant if ANY label is Dormant, otherwise Active."""
+    return "Dormant" if any(t in DORMANT_TYPES for t in tokens) else "Active"
+
+
+def _active_first(tokens):
+    """Sensitivity rule: Active if ANY label is Active, otherwise Dormant."""
+    return "Active" if any(t in ACTIVE_TYPES for t in tokens) else "Dormant"
+
+
+MULTI_LABEL_RULES = {
+    "dormant_first": _dormant_first,
+    "active_first": _active_first,
+}
+DEFAULT_MULTI_LABEL_RULE = "dormant_first"
+
+
+def categorize(label, rule=DEFAULT_MULTI_LABEL_RULE):
     """Map the manual label string to (category, tokens, multi_label).
 
     category is one of: Active, Dormant, EXPLANATORY, UNMAPPED.
-    Rule (clarification C-04): a row with several labels is Dormant if ANY label is
-    Dormant, otherwise Active. A row labelled only as explanatory is EXPLANATORY
-    (not aging debt). Anything not in the mapping is UNMAPPED and stays visible.
+    Rows with several Active/Dormant labels are resolved by `rule`, a key of
+    MULTI_LABEL_RULES (default "dormant_first" = clarification C-04). A row labelled
+    only as explanatory is EXPLANATORY (not aging debt). Anything not in the mapping
+    is UNMAPPED and stays visible.
     """
+    if rule not in MULTI_LABEL_RULES:
+        raise ValueError(f"unknown multi-label rule: {rule}")
     if label is None:
         return "UNMAPPED", [], False
     s = str(label).strip()
@@ -100,6 +125,4 @@ def categorize(label):
     known = ACTIVE_TYPES | DORMANT_TYPES
     if any(t not in known for t in tokens):
         return "UNMAPPED", tokens, multi
-    if any(t in DORMANT_TYPES for t in tokens):
-        return "Dormant", tokens, multi
-    return "Active", tokens, multi
+    return MULTI_LABEL_RULES[rule](tokens), tokens, multi
