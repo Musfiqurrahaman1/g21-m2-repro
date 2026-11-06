@@ -1,0 +1,9 @@
+run_utc: 2026-11-06T12:49:42+00:00
+command: scripts/classify.py --input data/raw/gold_standard_saad_comments.xlsx --patterns data/raw/saad_patterns.txt --multi-label-rule active_first --out results/week9/active_first
+python: 3.13.18  pandas: 3.0.5  openpyxl: 3.1.5
+input: data/raw/gold_standard_saad_comments.xlsx  sha256: 0c2155f4a703c2d8a117001c8dc1801d76af3f83f4a88e178d65694e0f7fe340
+patterns: data/raw/saad_patterns.txt  sha256: 32abf4e49867bc66335cfd6d81c504d9d270d79f1ea7f038843d497516693932
+sample: data/sample_ids.csv  sha256: 69e3479ddd5b9c05405e8091d603ad4d92909c3dcde12b8275dd65db4c8b6519
+patterns loaded: 399  failed to compile: 0
+multi-label rule: active_first
+sampled rows processed: 500  ids not found in input: 0

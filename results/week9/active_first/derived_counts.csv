@@ -1,0 +1,17 @@
+key,value
+sampled_rows,500
+matched_rows,493
+unmatched_rows,7
+matched_pct_of_sample,98.60
+category_Active_all,254
+category_Dormant_all,125
+category_EXPLANATORY_all,121
+category_UNMAPPED_all,0
+category_MISSING_all,0
+split_rows_matched_Active_or_Dormant,375
+split_Active,250
+split_Dormant,125
+split_Dormant_pct,33.33
+split_Dormant_wilson95_lo,28.75
+split_Dormant_wilson95_hi,38.25
+mechanical_status,NOT REPRODUCED
