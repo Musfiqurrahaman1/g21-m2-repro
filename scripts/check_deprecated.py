@@ -1,6 +1,7 @@
 ﻿import pandas as pd, sys
+from common import load_gold_table
 path = r"data\raw\gold_standard_saad_comments.xlsx"
-df = pd.read_excel(path)
+df = load_gold_table(path)
 c = df["cleaned_comment"].astype(str)
 lines = []
 lines.append("file: " + path)

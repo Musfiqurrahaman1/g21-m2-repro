@@ -1,0 +1,51 @@
+﻿Event B verification, run 2026-11-13T14:15:51
+Python 3.12.10
+pandas 3.1.0 openpyxl 3.1.5
+
+== read_excel call sites after the change ==
+scripts/common.py:41:# one function. It depends on pandas.read_excel and, behind it, an Excel engine (openpyxl).
+scripts/common.py:46:    return pd.read_excel(path, dtype=str)
+
+== tests ==
+PASS: pipeline self-test on synthetic data (not a study result)
+PASS: multi-label rule tests
+PASS: single loader design check (synthetic data, not a study result)
+make_heldout.py compiles: True
+
+== M2 sample, re-run with the loader (seed 42) ==
+wrote results\eventB\after\sample_ids.csv (500 ids) and results\eventB\after\sample_manifest.json
+sample_ids.csv identical to the frozen one: True
+
+== M2 classification, re-run with the loader ==
+run_utc: 2026-11-13T14:16:01+00:00
+command: scripts\classify.py --input data\raw\gold_standard_saad_comments.xlsx --patterns data\raw\saad_patterns.txt --out results\eventB\after
+python: 3.12.10  pandas: 3.1.0  openpyxl: 3.1.5
+input: data\raw\gold_standard_saad_comments.xlsx  sha256: 0c2155f4a703c2d8a117001c8dc1801d76af3f83f4a88e178d65694e0f7fe340
+patterns: data\raw\saad_patterns.txt  sha256: 78eafe30b1f4dd97d6c86d6172734e388cf932d652c531ef27559c3fe4e1a894
+sample: data/sample_ids.csv  sha256: ce7a854c4e0287c816ee113c4f40832431f94e6c10f45963ecf316106faa0780
+patterns loaded: 399  failed to compile: 0
+multi-label rule: dormant_first
+sampled rows processed: 500  ids not found in input: 0
+classification.csv identical to results/raw: True
+
+== Event A classification, re-run with the loader ==
+run_utc: 2026-11-13T14:16:06+00:00
+command: scripts\classify.py --input data\raw\gold_standard_saad_comments.xlsx --patterns data\raw\saad_patterns.txt --sample eventA_ids.csv --out results\eventB\after_eventA
+python: 3.12.10  pandas: 3.1.0  openpyxl: 3.1.5
+input: data\raw\gold_standard_saad_comments.xlsx  sha256: 0c2155f4a703c2d8a117001c8dc1801d76af3f83f4a88e178d65694e0f7fe340
+patterns: data\raw\saad_patterns.txt  sha256: 78eafe30b1f4dd97d6c86d6172734e388cf932d652c531ef27559c3fe4e1a894
+sample: eventA_ids.csv  sha256: 07ca5739e099fd38fff461ca13c74356f02a03d2074f20cfb03e89b3c29f2317
+patterns loaded: 399  failed to compile: 0
+multi-label rule: dormant_first
+sampled rows processed: 2937  ids not found in input: 0
+Event A classification.csv identical to results/eventA: True
+
+== check_deprecated.py, re-run with the loader ==
+file: data\raw\gold_standard_saad_comments.xlsx
+rows: 3437
+rows containing '@deprecated': 0
+rows containing 'deprecated': 695
+sampled rows: 500
+sampled rows containing '@deprecated': 0
+(no lines above means results/checks/deprecated_check.txt is unchanged)
+

@@ -6,6 +6,7 @@ import argparse
 import csv
 
 import pandas as pd
+from common import load_gold_table
 
 ap = argparse.ArgumentParser(description=__doc__)
 ap.add_argument("--input", required=True)
@@ -13,7 +14,7 @@ ap.add_argument("--used", default="data/sample_ids.csv")
 ap.add_argument("--out", default="data/eventA_ids.csv")
 args = ap.parse_args()
 
-df = pd.read_excel(args.input, dtype=str)
+df = load_gold_table(args.input)
 all_ids = sorted(set(df["comment_id"].dropna()))
 with open(args.used, newline="", encoding="utf-8") as f:
     used = {r["comment_id"] for r in csv.DictReader(f)}

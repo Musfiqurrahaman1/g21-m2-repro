@@ -37,6 +37,14 @@ def sha256(path, chunk=1 << 20):
     return h.hexdigest()
 
 
+# AGING-DEBT (recorded 2026-11-13, Event B): every script reads the gold Excel file through this
+# one function. It depends on pandas.read_excel and, behind it, an Excel engine (openpyxl).
+# If either is deprecated or removed, change THIS function only. See docs/eventB-debt.md.
+def load_gold_table(path):
+    '''Read gold_standard_saad_comments.xlsx with every column as text (dtype=str).'''
+    import pandas as pd  # imported here so code that only uses the pure-Python rules needs no pandas
+    return pd.read_excel(path, dtype=str)
+
 class Pattern:
     __slots__ = ("line_no", "raw", "cleaned", "rx", "error")
 

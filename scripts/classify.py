@@ -21,7 +21,7 @@ from pathlib import Path
 import openpyxl
 import pandas as pd
 
-from common import DEFAULT_MULTI_LABEL_RULE, MULTI_LABEL_RULES, categorize, load_patterns, sha256
+from common import DEFAULT_MULTI_LABEL_RULE, MULTI_LABEL_RULES, categorize, load_gold_table, load_patterns, sha256
 
 FIELDS = [
     "sample_order",
@@ -51,7 +51,7 @@ def main():
     )
     args = ap.parse_args()
 
-    df = pd.read_excel(args.input, dtype=str).set_index("comment_id")
+    df = load_gold_table(args.input).set_index("comment_id")
     patterns = load_patterns(args.patterns)
 
     with open(args.sample, newline="", encoding="utf-8") as f:

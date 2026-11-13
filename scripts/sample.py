@@ -16,7 +16,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from common import EXPLANATORY, sha256
+from common import EXPLANATORY, load_gold_table, sha256
 
 
 def main():
@@ -34,7 +34,7 @@ def main():
     ap.add_argument("--out", default="data/sample_ids.csv")
     args = ap.parse_args()
 
-    df = pd.read_excel(args.input, dtype=str)
+    df = load_gold_table(args.input)
     if df["comment_id"].duplicated().any():
         raise SystemExit("duplicate comment_id values in input - stop and investigate")
     total_rows = len(df)
